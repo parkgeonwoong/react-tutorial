@@ -1,5 +1,11 @@
-// 플레이어가 현재까지 게임에서 진행된 순서에 대한 반환된 정보 -> 각각의 플레이어가 어떤 수를 뒀는지 게임 플레이 중에 확인 -> 순서에 대한 동적인 배열 제어 -> 어떤 버튼에 대한 클릭은 상태를 끌어올려야 한다
-
-export default function Log() {
-  return <ol id="log"></ol>;
+export default function Log({ turns }) {
+  return (
+    <ol id="log">
+      {turns.map((turn) => (
+        <li key={`${turn.square.row}${turn.square.col}`}>
+          {turn.player} selected {turn.square.row}, {turn.square.col}
+        </li>
+      ))}
+    </ol>
+  );
 }
